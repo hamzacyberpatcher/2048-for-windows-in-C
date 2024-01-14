@@ -56,7 +56,7 @@ void gamereset(void);
 void gameundo(void);
 void gamesave(void);
 void gameload(void);
-void deletesavefile(void);
+void deletegamesave(void);
 void beepsound(int freq, int dur);
 
 int main()
