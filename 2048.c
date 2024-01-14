@@ -1,5 +1,3 @@
-//This is a 2048 game 
-//compile it on windows onlyy
 #include <stdio.h>
 #include <time.h>
 #include <conio.h>
@@ -104,7 +102,7 @@ int main()
 
 void setupboard(void)
 {
-	int i, j, k;
+	int i, j, k, random;
 	srand(time(NULL));
 	for(k = 1; k < 3; k++)
 	{
@@ -113,7 +111,15 @@ void setupboard(void)
 			i = rand() % SIZE;
 			j = rand() % SIZE;
 		} while(board[i][j] != 0);
-		board[i][j] = 2;
+		random = rand();
+		if (random % 10 == 0) // 0.9 probability for a 2 and 0.1 probability for a 4
+		{
+			board[i][j] = 4;	
+		}
+		else
+		{
+			board[i][j] = 2;	
+		}
 	}
 }
 
@@ -126,13 +132,13 @@ void addnewvalue(void)
 		j = rand() % SIZE;
 	} while(board[i][j] != 0);
 	temp = rand();
-	if ((temp % 2) == 0)
+	if ((temp % 10) == 0) // 0.1 prbability for a 4 and 0.9 probability for a 2
 	{
-		add = 2;
+		add = 4;
 	}
 	else
 	{
-		add = 4;
+		add = 2;
 	}
 	board[i][j] = add;
 }
